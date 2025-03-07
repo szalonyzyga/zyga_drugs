@@ -6,18 +6,14 @@ AddEventHandler('zyga_drugs:additem', function(nazwaitemu, ilosc)
     end
 end)
 
--- Register server callback for checking item
 ESX.RegisterServerCallback('zyga_drugs:hasItem', function(source, cb, itemName, amount)
-    local xPlayer = ESX.GetPlayerFromId(source)
+    local xPedal = ESX.GetPlayerFromId(source)
     
-    -- Check if the player has the item
-    local item = xPlayer.getInventoryItem(itemName)
+    local item = xPedal.getInventoryItem(itemName)
     
     if item and item.count >= amount then
-        -- Player has enough of the item
         cb(true)
     else
-        -- Player does not have enough of the item
         cb(false)
     end
 end)
